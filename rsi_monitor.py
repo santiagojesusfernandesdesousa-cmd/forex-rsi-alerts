@@ -32,7 +32,7 @@ PAIRS = [
 
 RSI_PERIOD = 14
 INTERVAL = "4h"
-OUTPUT_SIZE = 30
+OUTPUT_SIZE = 150
 WAIT_BETWEEN_REQUESTS_SEC = 8  # ~7.5 requests/min, under Twelve Data free limit of 8/min
 
 
