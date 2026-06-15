@@ -1,0 +1,20 @@
+name: Forex RSI Monitor
+
+on:
+  schedule:
+    - cron: '0 */4 * * *'
+  workflow_dispatch: {}
+
+jobs:
+  check-rsi:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Run RSI monitor
+        env:
+          TWELVE_DATA_API_KEY: ${{ secrets.TWELVE_DATA_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          curl -sO https://raw.githubusercontent.com/${{ github.repository }}/main/rsi_monitor.py
+          python3 rsi_monitor.py
